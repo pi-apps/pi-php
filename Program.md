@@ -36,11 +36,11 @@ We aim to collaborate with leading brands, financial institutions, and tech comp
 
 We dream of working with companies such as:
 
-| ![Google Logo] | ![Apple Logo] | ![Samsung Logo]|
+| ![Google] | ![Apple] | ![Samsung]|
 |:---------------------------------------:|:------------------------------------:|:----------------------------------------:|
 | **Google**                              | **Apple**                            | **Samsung**                             |
 
-| ![MTN Logo] | ![Ecobank Logo]| ![Orange Logo] |
+| ![MTN] | ![Ecobank]| ![Orange] |
 |:---------------------------------:|:----------------------------------------:|:---------------------------------------:|
 | **MTN**                           | **Ecobank**                              | **Orange**                             |
 
