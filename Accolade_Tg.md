@@ -1,5 +1,5 @@
 
-# ACCOLADE Togo S.A.R.L. Documentation
+# ACCOLADE Togo S.A.R.L. 
 
 ## Introduction
 
