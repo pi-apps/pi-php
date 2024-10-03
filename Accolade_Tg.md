@@ -1,6 +1,3 @@
-Voici une documentation en format `.MD` que vous pouvez utiliser pour GitHub. Elle présente la structure générale de l'entreprise et ses tâches principales.
-
----
 
 # ACCOLADE Togo S.A.R.L. Documentation
 
