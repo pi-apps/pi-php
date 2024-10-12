@@ -3,6 +3,7 @@
 
 # ⚠️ **LE GCV NE VIENT PAS DE LA CORE TEAM DE PI NETWORK** ⚠️
 
+**Le GCV** est simplement un souhait exprimé par certains membres de la communauté, mais il ne reflète en aucun cas une décision officielle de la Core Team.
 
 Nous souhaitons informer la communauté de se méfier des fausses informations que certaines personnes utilisent pour soutenir des causes non officielles comme le GCV. Il est important de toujours vous fier aux informations disponibles sur [Pi Network Safety](https://minepi.com/safety/).
 
