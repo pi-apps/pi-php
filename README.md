@@ -1,4 +1,8 @@
 # Avertissement à la Communauté
+**Pi Leader Africa**
+
+# ⚠️ **LE GCV NE VIENT PAS DE LA CORE TEAM DE PI NETWORK** ⚠️
+
 
 Nous souhaitons informer la communauté de se méfier des fausses informations que certaines personnes utilisent pour soutenir des causes non officielles comme le GCV. Il est important de toujours vous fier aux informations disponibles sur [Pi Network Safety](https://minepi.com/safety/).
 
