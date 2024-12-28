@@ -1,0 +1,19 @@
+{
+    "name": "get2/a2uphp",
+    "description": "PHP package to make App to User payment for Pi Network",
+    "require": {
+        "guzzlehttp/guzzle": "^7.9",
+        "soneso/stellar-php-sdk": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Get2\\A2uphp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Djedje SEWOVON",
+            "email": "jesssewovon@gmail.com"
+        }
+    ]
+}
