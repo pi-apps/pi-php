@@ -2,7 +2,7 @@
 
 namespace Get2\A2uphp;
 
-require __DIR__ . '/vendor/autoload.php';
+//require __DIR__ . '/vendor/autoload.php';
 
 use Soneso\StellarSDK\Crypto\KeyPair;
 use Soneso\StellarSDK\Util\FriendBot;
