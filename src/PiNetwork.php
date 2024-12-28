@@ -17,7 +17,7 @@ use Soneso\StellarSDK\FeeBumpTransactionBuilder;
 use Soneso\StellarSDK\Network;
 use Soneso\StellarSDK\TimeBounds;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Client; 
 
 class PiNetwork{
 	private $api_key;
