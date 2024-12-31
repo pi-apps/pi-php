@@ -204,6 +204,7 @@ See documentation for the `getIncompleteServerPayments` above.
 
 ## Full test
 
+```php
 <?php
 
 	require __DIR__ . '/vendor/autoload.php';
