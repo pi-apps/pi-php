@@ -36,6 +36,13 @@ class PiNetwork{
         ]);
 	}
 
+    public function getHorizonClient($network)
+    {
+        $serverUrl = $network === "Pi Network" ? "https://api.mainnet.minepi.com" : "https://api.testnet.minepi.com";
+        $sdk = new StellarSDK($serverUrl);
+        return $sdk;
+    }
+
 	public function createPayment($paymentData)
 	{
 		$rep = $this->httpClient->request('POST', '/v2/payments', [
@@ -124,9 +131,9 @@ class PiNetwork{
 
         $amount = $this->currentPayment->amount;
         $destination = $this->currentPayment->to_address;
+        $network = $this->currentPayment->network;
 
-        $url = "https://api.testnet.minepi.com";
-        $sdk = new StellarSDK($url);
+        $sdk = $this->getHorizonClient($network);
 
         ///////////////////////////////////////////////////////
         $responseFeeStats = $sdk->requestFeeStats();
@@ -139,9 +146,9 @@ class PiNetwork{
         // Load sender account data from the stellar network.
         $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
 
-        $minTime = 1641803321;
+        /*$minTime = 1641803321;
         $maxTime = 1741803321;
-        $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));
+        $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));*/
 
         $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
         $transaction = (new TransactionBuilder($sender))
@@ -149,11 +156,10 @@ class PiNetwork{
             ->setMaxOperationFee($feeCharged)
             //->addMemo(Memo::text($this->currentPayment->memo))
             ->addMemo(Memo::text($this->currentPayment->identifier))
-            ->setTimeBounds($timeBounds)
+            //->setTimeBounds($timeBounds)
             ->build();
         // Sign and submit the transaction
-        $network = new Network($this->currentPayment->network);
-        $transaction->sign($senderKeyPair, $network);
+        $transaction->sign($senderKeyPair, new Network($network));
         $response = $sdk->submitTransaction($transaction);
 
         if (!$response->isSuccessful()) {
