@@ -202,7 +202,8 @@ If you do not know what this payment maps to in your business logic, you may use
 
 See documentation for the `getIncompleteServerPayments` above.
 
-##Full test
+## Full test
+
 <?php
 
 	require __DIR__ . '/vendor/autoload.php';
@@ -212,7 +213,7 @@ See documentation for the `getIncompleteServerPayments` above.
     $api_key = "your_api_key";
     $seed = "your_seed";
     $uid = "recipient_uid";
-    
+
     $pi = new PiNetwork($api_key, $seed);
     $incompletePayments = $pi->incompletePayments();
     $identifier = "";
