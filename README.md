@@ -202,11 +202,11 @@ If you do not know what this payment maps to in your business logic, you may use
 
 See documentation for the `getIncompleteServerPayments` above.
 
-## Full test
+## Full example
 
 ```php
-<?php
 
+<?php
 	require __DIR__ . '/vendor/autoload.php';
 
     use Get2\A2uphp\PiNetwork;
