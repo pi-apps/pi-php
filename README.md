@@ -17,6 +17,7 @@ Install this package as a dependency of your app:
 ```composer
 # With composer:
 composer require get2/a2uphp:dev-main
+```
 
 ## Example
 
