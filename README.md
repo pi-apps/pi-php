@@ -33,7 +33,7 @@ Consider this a database table example.
 | `userUid` | apple-pie-1 | 3.14 | Refund for apple pie | NULL | NULL |
 
 ```php
-$userUid = "user_uid_of_your_app";
+$userUid = "user_uid_of_your_app";//recipient uid
 $paymentData = [
     "payment" => [
 	  "amount" => 1,
@@ -56,9 +56,9 @@ After creating the payment, you'll get `paymentId`, which you should be storing 
 | `userUid` | apple-pie-1 | 3.14 | Refund for apple pie | `paymentId` | NULL |
 
 4. Submit the payment to the Pi Blockchain
-```javascript
+```php
 // It is strongly recommended that you store the txid along with the paymentId you stored earlier for your reference.
-const txid = await pi.submitPayment(paymentId);
+$txid = $pi->submitPayment($paymentId);
 ```
 
 5. Store the txid in your database
@@ -70,13 +70,13 @@ Similarly as you did in step 3, keep the txid along with other data.
 | `userUid` | apple-pie-1 | 3.14 | Refund for apple pie | `paymentId` | `txid` |
 
 6. Complete the payment
-```javascript
-const completedPayment = await pi.completePayment(paymentId, txid);
+```php
+$completedPayment = $pi->completePayment($paymentId, $txid);
 ```
 
 ## Overall flow for A2U (App-to-User) payment
 
-To create an A2U payment using the Pi Node.js SDK, here's an overall flow you need to follow:
+To create an A2U payment using the Pi PHP SDK, here's an overall flow you need to follow:
 
 1. Initialize the SDK
 > You'll be initializing the SDK with the Pi API Key of your app and the Private Seed of your app wallet.
@@ -103,16 +103,18 @@ This section shows you a list of available methods.
 
 This method creates an A2U payment.
 
-- Required parameter: `PaymentArgs`
+- Required parameter: `paymentArgs`
 
 You need to provide 4 different data and pass them as a single object to this method.
-```typescript
-type PaymentArgs = {
-  amount: number // the amount of Pi you're paying to your user
-  memo: string // a short memo that describes what the payment is about
-  metadata: object // an arbitrary object that you can attach to this payment. This is for your own use. You should use this object as a way to link this payment with your internal business logic.
-  uid: string // a user uid of your app. You should have access to this value if a user has authenticated on your app.
-}
+```php
+$paymentArgs = [
+	"payment" => [
+	  "amount" => double, // the amount of Pi you're paying to your user
+	  "memo" => string, // a short memo that describes what the payment is about
+	  "metadata" => Array // an arbitrary object that you can attach to this payment. This is for your own use. You should use this object as a way to link this payment with your internal business logic.
+	  "uid" => string // a recipient user uid of your app. You should have access to this value if a user has authenticated on your app.
+	]
+]
 ```
 
 - Return value: `a payment identifier (paymentId: string)`
@@ -133,8 +135,8 @@ This method completes the payment in the Pi server.
 
 The method return a payment object with the following fields:
 
-```typescript
-payment: PaymentDTO = {
+```php
+PaymentDTO = {
   // Payment data:
   identifier: string, // payment identifier
   user_uid: string, // user's app-specific ID

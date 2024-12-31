@@ -70,65 +70,19 @@ class PiNetwork{
         return $body_obj;
     }
 
-    public function submitPayment_old($paymentId)
-    {
-        $currentPayment = $this->getPayment($paymentId);
-        $amount = $currentPayment->amount;
-        $from_address = $currentPayment->from_address;
-        $to_address = $currentPayment->to_address;
-        
-        $url = "https://api.testnet.minepi.com";
-        $sdk = new StellarSDK($url);
-
-        $senderKeyPair = KeyPair::fromSeed($this->walletPrivateSeed);
-        $destination = $to_address;
-
-        // Load sender account data from the stellar network.
-        $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
-
-        // Build the transaction to send 100 XLM native payment from sender to destination
-        $minTime = 1;
-        $maxTime = 90080;
-        $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));
-
-        $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
-        $transaction = (new TransactionBuilder($sender))
-        //->setTimeBounds($timeBounds)
-        ->setMaxOperationFee(0.01)
-        ->addOperation($paymentOperation)->build();
-
-        // Sign the transaction with the sender's key pair.
-        $transaction->sign($senderKeyPair, Network::testnet());
-
-        $feeBump = (new FeeBumpTransactionBuilder($innerTx))->setBaseFee(200)->setFeeAccount($payerId)->build();
-
-        // Sign the fee bump transaction with the payer keypair
-        $feeBump->sign($payerKeyPair, Network::testnet());
-
-        // Submit the transaction to the stellar network.
-        $response = $sdk->submitTransaction($transaction);
-        if ($response->isSuccessful()) {
-            print(PHP_EOL."Payment sent");
-        }
-        return $response;
-    }
-
     public function submitPayment(string $paymentId)
     {
         if (!$this->currentPayment || $this->currentPayment->identifier !== $paymentId) {
             $this->currentPayment = $this->getPayment($paymentId);
             $txid = $this->currentPayment->transaction->txid ?? null;
             if ($txid) {
-                return $txid;
-
-                /*throw new \Exception(json_encode([
+                throw new \Exception(json_encode([
                     'message' => 'This payment already has a linked txid',
                     'paymentId' => $paymentId,
                     'txid' => $txid
-                ]));*/
+                ]));
             }
         }
-
         $amount = $this->currentPayment->amount;
         $destination = $this->currentPayment->to_address;
         $network = $this->currentPayment->network;
