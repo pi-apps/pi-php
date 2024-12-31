@@ -263,10 +263,11 @@ See documentation for the `getIncompleteServerPayments` above.
     var_dump($paymentComplete);
 
 ?>
+```php
 
 ## Apps
 
-- PIKETPLACE[Marketplace on Pi](https://mainnet.piketplace.com).
+- PIKETPLACE[Marketplace on Pi]<a href="https://mainnet.piketplace.com" target="_blank">(https://mainnet.piketplace.com)</a>.
 - PIKET WALLET[Wallet on Pi, Fast and instant payments](https://wallet.piketplace.com).
 - FESTMAP[Intelligent automated geolocation of local businesses](https://festmap.piketplace.com).
 - PI GAME[Play Game](https://play.filano.dev).
