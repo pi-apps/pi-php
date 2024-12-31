@@ -118,7 +118,7 @@ $paymentArgs = [
 	"payment" => [
 	  "amount" => double, // the amount of Pi you're paying to your user
 	  "memo" => string, // a short memo that describes what the payment is about
-	  "metadata" => Array // an arbitrary object that you can attach to this payment. This is for your own use. You should use this object as a way to link this payment with your internal business logic.
+	  "metadata" => Array // an arbitrary Array that you can attach to this payment. This is for your own use. You should use this Array as a way to link this payment with your internal business logic.
 	  "uid" => string // a recipient user uid of your app. You should have access to this value if a user has authenticated on your app.
 	]
 ]
