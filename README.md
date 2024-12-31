@@ -263,7 +263,7 @@ See documentation for the `getIncompleteServerPayments` above.
     var_dump($paymentComplete);
 
 ?>
-```php
+```
 
 ## Apps
 
