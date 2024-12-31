@@ -268,5 +268,5 @@ See documentation for the `getIncompleteServerPayments` above.
 
 - PIKETPLACE [Marketplace on Pi](https://mainnet.piketplace.com).
 - PIKET WALLET [Wallet on Pi, Fast and instant payments](https://wallet.piketplace.com).
-- FESTMAP [Intelligent automated geolocation of local businesses](https://festmap.piketplace.com).
+- FESTMAP [Intelligent automated geolocation of local businesses](https://myfestmap.com).
 - PI GAME [Play Game](https://play.filano.dev).
