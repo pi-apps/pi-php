@@ -1,3 +1,11 @@
+<p align="center">
+<a href="https://packagist.org/packages/get2/a2uphp"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/get2/a2uphp"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/get2/a2uphp"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/get2/a2uphp"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
+
+
 # Pi Network - PHP server-side package
 
 This is a Pi Network PHP package you can use to integrate the Pi Network apps platform with a PHP backend application.
@@ -8,7 +16,7 @@ Install this package as a dependency of your app:
 
 ```composer
 # With composer:
-composer require get2/a2uphp
+composer require get2/a2uphp:dev-main
 
 ## Example
 
