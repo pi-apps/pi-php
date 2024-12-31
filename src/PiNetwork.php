@@ -54,7 +54,7 @@ class PiNetwork{
         ]);
         $body = $rep->getBody();
         $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
-        return $body_obj;
+        return $body_obj->identifier;
 	}
 
     public function getPayment($paymentId)
