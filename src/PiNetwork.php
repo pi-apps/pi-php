@@ -195,7 +195,7 @@ class PiNetwork{
         return $body_obj;
     }
 
-    public function incompletePayments()
+    public function incompletePayments(): Array
     {
         $rep = $this->httpClient->request('GET', '/v2/payments/incomplete_server_payments', [
             'headers' => [
@@ -205,7 +205,22 @@ class PiNetwork{
         ]);
         $body = $rep->getBody();
         $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
-        return $body_obj;
+        return $body_obj->incomplete_server_payments;
+    }
+
+    public function cancelAllIncompletePayments()
+    {
+        try {
+            $incompletePayments = $this->incompletePayments();
+            if (is_array($incompletePayments)) {
+                foreach ($incompletePayments as $key => $value) {
+                    $this->cancelPayment($value->identifier);
+                }
+            }
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }
 
