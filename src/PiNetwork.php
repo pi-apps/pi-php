@@ -45,16 +45,23 @@ class PiNetwork{
 
 	public function createPayment($paymentData)
 	{
-		$rep = $this->httpClient->request('POST', '/v2/payments', [
-            'headers' => [
-                'Accept' => 'application/json',
-                'Authorization' => 'Key '.$this->api_key
-            ],
-            'json' => $paymentData
-        ]);
-        $body = $rep->getBody();
-        $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
-        return $body_obj->identifier;
+        try {
+    		$rep = $this->httpClient->request('POST', '/v2/payments', [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Key '.$this->api_key
+                ],
+                'json' => $paymentData
+            ]);
+            $body = $rep->getBody();
+            $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
+            return $body_obj->identifier;
+        } catch (\Exception $e) {
+            return [
+                'status' => false,
+                'message' => $e->getMessage(),
+            ];
+        }
 	}
 
     public function getPayment($paymentId)
@@ -116,7 +123,11 @@ class PiNetwork{
         $response = $sdk->submitTransaction($transaction);
 
         if (!$response->isSuccessful()) {
-            throw new \Exception('Transaction submission failed: ' . json_encode($response->getExtras()));
+            //throw new \Exception('Transaction submission failed: ' . json_encode($response->getExtras()));
+            return [
+                'status' => false,
+                'message' => json_encode($response->getExtras())
+            ];
         }
 
         return $response->getHash();
@@ -124,29 +135,43 @@ class PiNetwork{
 
     public function completePayment($paymentId, $txid)
     {
-        $rep = $this->httpClient->request('POST', '/v2/payments/'.$paymentId.'/complete', [
-            'headers' => [
-                'Accept' => 'application/json',
-                'Authorization' => 'Key '.$this->api_key
-            ],
-            'json' => ['txid' => $txid],
-        ]);
-        $body = $rep->getBody();
-        $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
-        return $body_obj;
+        try {
+            $rep = $this->httpClient->request('POST', '/v2/payments/'.$paymentId.'/complete', [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Key '.$this->api_key
+                ],
+                'json' => ['txid' => $txid],
+            ]);
+            $body = $rep->getBody();
+            $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
+            return $body_obj;
+        } catch (\Exception $e) {
+            return [
+                'status' => false,
+                'message' => $e->getMessage(),
+            ];
+        }
     }
 
     public function cancelPayment($paymentId)
     {
-        $rep = $this->httpClient->request('POST', '/v2/payments/'.$paymentId.'/cancel', [
-            'headers' => [
-                'Accept' => 'application/json',
-                'Authorization' => 'Key '.$this->api_key
-            ],
-        ]);
-        $body = $rep->getBody();
-        $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
-        return $body_obj;
+        try {
+            $rep = $this->httpClient->request('POST', '/v2/payments/'.$paymentId.'/cancel', [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Key '.$this->api_key
+                ],
+            ]);
+            $body = $rep->getBody();
+            $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
+            return $body_obj;
+        } catch (\Exception $e) {
+            return [
+                'status' => false,
+                'message' => $e->getMessage(),
+            ];
+        }
     }
 
     public function incompletePayments(): Array
