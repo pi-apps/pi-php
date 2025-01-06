@@ -2,7 +2,7 @@
 **Pi Leader Africa**
 
 # ⚠️ **LE GCV NE VIENT PAS DE LA CORE TEAM DE PI NETWORK (JUSTE UN VŒU DE CERTAINS MEMBRES)** ⚠️
-# LEADER LINZO MOUKEDI DANGO #
+# LEADER LINZO MOUKEDI DANGO HOUEZOJOSEPHAT97(NICO NICO)#
 
 
 **Le GCV** est simplement un souhait exprimé par certains membres de la communauté, mais il ne reflète en aucun cas une décision officielle de la Core Team.
